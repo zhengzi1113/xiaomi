@@ -1,0 +1,74 @@
+@import './mixin.scss';
+
+.container {
+    position: relative;
+    width: 1226px;
+    margin-right: auto;
+    margin-left: auto;
+
+    // ！！！！这三句代码曾导致了flex布局失效，使得页面往左右扩展！！！原因不明
+    // display: flex; //:设置元素两边对齐  中间居中//罪魁祸首！
+    // justify-content: space-between; //水平方向居中
+    // align-items: center; //垂直方向居中
+}
+
+a {
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+input {
+    outline: none;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: ' ';
+    display: table;
+}
+
+.clearfix::after {
+    clear: both
+}
+
+//logo
+.header-logo {
+    display: inline-block;
+    width: 55px;
+    height: 55px;
+    background-color: #ff6600;
+
+    a {
+        display: inline-block;
+        width: 110px;
+        height: 55px;
+
+        &:before {
+            content: " ";
+            @include bgImg(55px, 55px, "../image/imgs/mi-logo.png", 55px);
+            transition: margin 0.2s;
+        }
+
+        &:after {
+            content: "";
+            @include bgImg(55px, 55px, "../image/imgs/mi-home.png", 55px);
+        }
+
+        &:hover:before {
+            margin-left: -55px;
+            transition: margin 0.2s;
+        }
+    }
+}
